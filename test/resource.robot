@@ -4,7 +4,7 @@ Library         SeleniumLibrary
 *** Variables ***
 ${user_name}            rahulshettyacademy
 ${Invalid_Password}     rahulshettyacademy
-${valid_Password}       Learning
+${Valid_Password}       learning
 ${url}                  https://rahulshettyacademy.com/loginpagePractise/
 
 *** Keywords ***

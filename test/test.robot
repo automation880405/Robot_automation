@@ -1,33 +1,57 @@
 *** Settings ***
 Documentation   Validate the Login form
 Library         SeleniumLibrary
+Library    Collections
 Test Setup      Open the URL with mortgage Paymnet URL
 Test Teardown   Close Browser
 Resource        resource.robot
 #Selenium
 *** Variables ***
 ${Error_message_Login}      css:div.alert-danger
-${Username}         id:username
-${Password}         id:password
-*** Test Cases ***
-VALIDATE SUCESSFUL LOGIN
+${Shop_page_load}           css:.nav-link
 
-    FILL THE LOGIN FORM
-    wait untill it checks and display error message
-    Verify erorr message is correct
+
+*** Test Cases ***
+VALIDATE card display in the shopping page
+    FILL THE LOGIN FORM     ${user_name}    ${Valid_Password}
+    Wait Until Element Is loacted in the page    ${Shop_page_load}
+    Verify cards titles in the Shop page
+    Select the card     Blackberry
+
 *** Keywords ***
 
-
 FILL THE LOGIN FORM
-    Input Text    ${Username}    ${user_name}
-    Input Password    ${Password}    ${Invalid_Password}
+    [arguments]     ${user_name}     ${Valid_Password}
+    Input Text    id:username      ${user_name}
+    Input Password    id:password    ${Valid_Password}
     Click Button    id:signInBtn
-wait untill it checks and display error message
-    Wait Until Element Is Visible    ${Error_message_Login}
-Verify erorr message is correct
-    ${result}=  Get Text             ${Error_message_Login}
-    Should Be Equal As Strings    ${result}    Incorrect username/password.
-    Element Text Should Be    ${result}     Incorrect username/password.
+
+Wait Until Element Is loacted in the page
+    [arguments]     ${element}
+    Wait Until Element Is Visible       ${element}
+
+Verify cards titles in the Shop page
+    @{ExpectedList}=  Create List     iphone X    Samsung Note 8    Nokia Edge    Blackberry
+    ${elements}=    Get WebElements    css:.card-title
+    @{actualList}=  Create List
+    FOR    ${element}    IN    @{elements}
+
+        Log    ${element.text}
+        Append To List  ${actualList}   ${element.text}
+
+    END
+    Lists Should Be Equal   ${ExpectedList}      ${actualList}
+
+Select the card
+    [arguments]    ${cardName}
+    ${elements}=    Get WebElements    css:.card-title
+    ${Index}=   Set Variable    1
+    FOR    ${element}    IN    @{elements}
+        Exit For Loop If      '${cardName}' == '${element.text}'
+         ${index}=  Evaluate   ${index} + 1
+
+    END
+    Click Button    xpath:(//*[@class='card-footer'])[${Index}]/button
 
 
 
