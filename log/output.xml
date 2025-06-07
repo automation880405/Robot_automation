@@ -1,65 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.2 (Python 3.12.4 on win32)" generated="2025-02-16T00:49:36.214757" rpa="false" schemaversion="5">
-<suite id="s1" name="Test" source="C:\Users\avina\PycharmProjects\Robot_automation\test\test.robot">
-<test id="s1-t1" name="VALIDATE card display in the shopping page" line="14">
-<kw name="Open the URL with mortgage Paymnet URL" owner="resource" type="SETUP">
-<kw name="Create Webdriver" owner="SeleniumLibrary">
-<msg time="2025-02-16T00:49:36.573598" level="INFO">Creating an instance of the Chrome WebDriver.</msg>
-<arg>Chrome</arg>
-<doc>Creates an instance of Selenium WebDriver.</doc>
-<status status="PASS" start="2025-02-16T00:49:36.573598" elapsed="1.647336"/>
+<robot generator="Robot 7.2 (Python 3.12.4 on win32)" generated="2025-06-07T23:40:33.207158" rpa="false" schemaversion="5">
+<suite id="s1" name="APITest" source="C:\Users\avina\PycharmProjects\Robot_automation\test\APITest.robot">
+<test id="s1-t1" name="Add new book" line="33">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-06-07T23:40:33.952282" level="INFO">${new_json} = {'name': 'Avinash', 'isbn': '435875', 'aisle': '4552', 'author': 'Avinash'}</msg>
+<var>${new_json}</var>
+<arg>name=Avinash</arg>
+<arg>isbn=435875</arg>
+<arg>aisle=4552</arg>
+<arg>author=Avinash</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-06-07T23:40:33.952282" elapsed="0.000000"/>
 </kw>
-<kw name="Go To" owner="SeleniumLibrary">
-<msg time="2025-02-16T00:49:38.221934" level="INFO">Opening url 'https://rahulshettyacademy.com/loginpagePractise/'</msg>
-<arg>${url}</arg>
-<doc>Navigates the current browser window to the provided ``url``.</doc>
-<status status="PASS" start="2025-02-16T00:49:38.221934" elapsed="1.732681"/>
+<kw name="POST" owner="RequestsLibrary">
+<msg time="2025-06-07T23:40:34.178095" level="INFO">POST Request : url=https://rahulshettyacademy.com/Library/Addbook.php 
+ path_url=/Library/Addbook.php 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '75', 'Content-Type': 'application/json'} 
+ body=b'{"name": "Avinash", "isbn": "435875", "aisle": "4552", "author": "Avinash"}' 
+ </msg>
+<msg time="2025-06-07T23:40:34.178095" level="INFO">POST Response : url=https://rahulshettyacademy.com/Library/Addbook.php 
+ status=200, reason=OK 
+ headers={'Date': 'Sat, 07 Jun 2025 18:10:34 GMT', 'Server': 'Apache/2.4.52 (Ubuntu)', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'POST', 'Access-Control-Max-Age': '3600', 'Access-Control-Allow-Headers': 'Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With', 'Content-Length': '46', 'Keep-Alive': 'timeout=5, max=100', 'Connection': 'Keep-Alive', 'Content-Type': 'application/json;charset=UTF-8'} 
+ body={"Msg":"successfully added","ID":"4358754552"} 
+ </msg>
+<msg time="2025-06-07T23:40:34.178095" level="INFO">${new_response} = &lt;Response [200]&gt;</msg>
+<var>${new_response}</var>
+<arg>${base_url}/Library/Addbook.php</arg>
+<arg>json=${new_json}</arg>
+<arg>expected_status=200</arg>
+<doc>Sends a POST request.</doc>
+<status status="PASS" start="2025-06-07T23:40:33.952282" elapsed="0.225813"/>
 </kw>
-<status status="PASS" start="2025-02-16T00:49:36.573598" elapsed="3.381017"/>
-</kw>
-<kw name="FILL THE LOGIN FORM">
-<kw name="Input Text" owner="SeleniumLibrary">
-<msg time="2025-02-16T00:49:39.954615" level="INFO">Typing text 'rahulshettyacademy' into text field 'id:username'.</msg>
-<arg>id:username</arg>
-<arg>${user_name}</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<status status="PASS" start="2025-02-16T00:49:39.954615" elapsed="0.200587"/>
-</kw>
-<kw name="Input Password" owner="SeleniumLibrary">
-<msg time="2025-02-16T00:49:40.156929" level="INFO">Typing password into text field 'id:password'.</msg>
-<msg time="2025-02-16T00:49:40.187524" level="INFO">Temporally setting log level to: NONE</msg>
-<arg>id:password</arg>
-<arg>${Valid_Password}</arg>
-<doc>Types the given password into the text field identified by ``locator``.</doc>
-<status status="PASS" start="2025-02-16T00:49:40.156929" elapsed="0.114225"/>
-</kw>
-<kw name="Click Button" owner="SeleniumLibrary">
-<msg time="2025-02-16T00:49:40.271154" level="INFO">Clicking button 'id:signInBtn'.</msg>
-<arg>id:signInBtn</arg>
-<doc>Clicks the button identified by ``locator``.</doc>
-<status status="PASS" start="2025-02-16T00:49:40.271154" elapsed="0.081896"/>
-</kw>
-<arg>${user_name}</arg>
-<arg>${Valid_Password}</arg>
-<status status="PASS" start="2025-02-16T00:49:39.954615" elapsed="0.398435"/>
-</kw>
-<kw name="Wait Until Element Is loacted in the page">
-<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
-<arg>${element}</arg>
-<doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" start="2025-02-16T00:49:40.354166" elapsed="2.749068"/>
-</kw>
-<arg>${Shop_page_load}</arg>
-<status status="PASS" start="2025-02-16T00:49:40.353050" elapsed="2.750184"/>
-</kw>
-<kw name="Close Browser" owner="SeleniumLibrary" type="TEARDOWN">
-<doc>Closes the current browser.</doc>
-<status status="PASS" start="2025-02-16T00:49:43.103234" elapsed="2.159822"/>
-</kw>
-<status status="PASS" start="2025-02-16T00:49:36.573598" elapsed="8.689458"/>
+<status status="PASS" start="2025-06-07T23:40:33.952282" elapsed="0.225813"/>
 </test>
-<doc>Validate the Login form</doc>
-<status status="PASS" start="2025-02-16T00:49:36.246904" elapsed="9.031991"/>
+<status status="PASS" start="2025-06-07T23:40:33.248344" elapsed="0.941611"/>
 </suite>
 <statistics>
 <total>
@@ -68,7 +42,7 @@
 <tag>
 </tag>
 <suite>
-<stat name="Test" id="s1" pass="1" fail="0" skip="0">Test</stat>
+<stat name="APITest" id="s1" pass="1" fail="0" skip="0">APITest</stat>
 </suite>
 </statistics>
 <errors>

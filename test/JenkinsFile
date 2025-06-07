@@ -1,0 +1,38 @@
+pipeline {
+    agent {
+        docker {
+            image 'ppodgorsek/robot-framework'  // Prebuilt Robot Framework Docker image
+            args '--shm-size=2g'  // Increase shared memory for browser tests
+        }
+    }
+
+    environment {
+        BROWSER = 'chrome'  // You can change it to 'firefox' if needed
+    }
+
+    stages {
+        stage('Checkout Code') {
+            steps {
+                git branch: 'main', url: 'https://github.com/YOUR_GITHUB_REPO.git'
+            }
+        }
+
+        stage('Run Robot Tests') {
+            steps {
+                sh 'robot -d Results tests/'  // Run tests and store results in the "Results" folder
+            }
+        }
+
+        stage('Publish Results') {
+            steps {
+                publishRobotFrameworkReports outputPath: "Results"
+            }
+        }
+    }
+
+    post {
+        always {
+            archiveArtifacts artifacts: 'Results/*.xml, Results/*.html', fingerprint: true
+        }
+    }
+}

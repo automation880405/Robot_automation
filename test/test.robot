@@ -16,7 +16,7 @@ VALIDATE card display in the shopping page
     FILL THE LOGIN FORM     ${user_name}    ${Valid_Password}
     Wait Until Element Is loacted in the page    ${Shop_page_load}
     Verify cards titles in the Shop page
-    Select the card     Blackberry
+    Select the card     Samsung Note 8
 
 *** Keywords ***
 
@@ -51,7 +51,7 @@ Select the card
          ${index}=  Evaluate   ${index} + 1
 
     END
-    Click Button    xpath:(//*[@class='card-footer'])[${Index}]/button
+    Click Button    xpath:(//*[@class='card-footer'])[${Index}]/buttonrob
 
 
 
