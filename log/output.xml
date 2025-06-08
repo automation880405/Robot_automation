@@ -1,48 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.2 (Python 3.12.4 on win32)" generated="2025-06-07T23:40:33.207158" rpa="false" schemaversion="5">
+<robot generator="Robot 7.2 (Python 3.12.4 on win32)" generated="2025-06-08T00:12:29.296277" rpa="false" schemaversion="5">
 <suite id="s1" name="APITest" source="C:\Users\avina\PycharmProjects\Robot_automation\test\APITest.robot">
-<test id="s1-t1" name="Add new book" line="33">
+<test id="s1-t1" name="Get the book details added" line="30">
 <kw name="Create Dictionary" owner="BuiltIn">
-<msg time="2025-06-07T23:40:33.952282" level="INFO">${new_json} = {'name': 'Avinash', 'isbn': '435875', 'aisle': '4552', 'author': 'Avinash'}</msg>
-<var>${new_json}</var>
-<arg>name=Avinash</arg>
-<arg>isbn=435875</arg>
-<arg>aisle=4552</arg>
-<arg>author=Avinash</arg>
+<msg time="2025-06-08T00:12:29.909346" level="INFO">${Params} = {'name': 'Vishal'}</msg>
+<var>${Params}</var>
+<arg>name=Vishal</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<status status="PASS" start="2025-06-07T23:40:33.952282" elapsed="0.000000"/>
+<status status="PASS" start="2025-06-08T00:12:29.909346" elapsed="0.012778"/>
 </kw>
-<kw name="POST" owner="RequestsLibrary">
-<msg time="2025-06-07T23:40:34.178095" level="INFO">POST Request : url=https://rahulshettyacademy.com/Library/Addbook.php 
- path_url=/Library/Addbook.php 
- headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '75', 'Content-Type': 'application/json'} 
- body=b'{"name": "Avinash", "isbn": "435875", "aisle": "4552", "author": "Avinash"}' 
+<kw name="GET" owner="RequestsLibrary">
+<msg time="2025-06-08T00:12:30.086812" level="INFO">GET Request : url=https://rahulshettyacademy.com/Library/GetBook.php?name=Vishal 
+ path_url=/Library/GetBook.php?name=Vishal 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
  </msg>
-<msg time="2025-06-07T23:40:34.178095" level="INFO">POST Response : url=https://rahulshettyacademy.com/Library/Addbook.php 
+<msg time="2025-06-08T00:12:30.086812" level="INFO">GET Response : url=https://rahulshettyacademy.com/Library/GetBook.php?name=Vishal 
  status=200, reason=OK 
- headers={'Date': 'Sat, 07 Jun 2025 18:10:34 GMT', 'Server': 'Apache/2.4.52 (Ubuntu)', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'POST', 'Access-Control-Max-Age': '3600', 'Access-Control-Allow-Headers': 'Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With', 'Content-Length': '46', 'Keep-Alive': 'timeout=5, max=100', 'Connection': 'Keep-Alive', 'Content-Type': 'application/json;charset=UTF-8'} 
- body={"Msg":"successfully added","ID":"4358754552"} 
+ headers={'Date': 'Sat, 07 Jun 2025 18:42:30 GMT', 'Server': 'Apache/2.4.52 (Ubuntu)', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'POST', 'Access-Control-Max-Age': '3600', 'Access-Control-Allow-Headers': 'Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With', 'Content-Length': '0', 'Keep-Alive': 'timeout=5, max=100', 'Connection': 'Keep-Alive', 'Content-Type': 'application/json; charset=UTF-8'} 
+ body=None 
  </msg>
-<msg time="2025-06-07T23:40:34.178095" level="INFO">${new_response} = &lt;Response [200]&gt;</msg>
-<var>${new_response}</var>
-<arg>${base_url}/Library/Addbook.php</arg>
-<arg>json=${new_json}</arg>
+<msg time="2025-06-08T00:12:30.088824" level="INFO">${get_response} = &lt;Response [200]&gt;</msg>
+<var>${get_response}</var>
+<arg>${base_url}/Library/GetBook.php</arg>
+<arg>params=${Params}</arg>
 <arg>expected_status=200</arg>
-<doc>Sends a POST request.</doc>
-<status status="PASS" start="2025-06-07T23:40:33.952282" elapsed="0.225813"/>
+<doc>Sends a GET request.</doc>
+<status status="PASS" start="2025-06-08T00:12:29.922124" elapsed="0.166700"/>
 </kw>
-<status status="PASS" start="2025-06-07T23:40:33.952282" elapsed="0.225813"/>
+<kw name="Dictionary Should Contain Key" owner="Collections">
+<msg time="2025-06-08T00:12:30.088824" level="FAIL">TypeError: Expected argument 1 to be a dictionary, got Response instead.</msg>
+<arg>${get_response}</arg>
+<arg>aisle=3452</arg>
+<doc>Fails if ``key`` is not found from ``dictionary``.</doc>
+<status status="FAIL" start="2025-06-08T00:12:30.088824" elapsed="0.000000">TypeError: Expected argument 1 to be a dictionary, got Response instead.</status>
+</kw>
+<status status="FAIL" start="2025-06-08T00:12:29.909346" elapsed="0.179478">TypeError: Expected argument 1 to be a dictionary, got Response instead.</status>
 </test>
-<status status="PASS" start="2025-06-07T23:40:33.248344" elapsed="0.941611"/>
+<status status="FAIL" start="2025-06-08T00:12:29.327539" elapsed="0.761285"/>
 </suite>
 <statistics>
 <total>
-<stat pass="1" fail="0" skip="0">All Tests</stat>
+<stat pass="0" fail="1" skip="0">All Tests</stat>
 </total>
 <tag>
 </tag>
 <suite>
-<stat name="APITest" id="s1" pass="1" fail="0" skip="0">APITest</stat>
+<stat name="APITest" id="s1" pass="0" fail="1" skip="0">APITest</stat>
 </suite>
 </statistics>
 <errors>

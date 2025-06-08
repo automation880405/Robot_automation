@@ -4,7 +4,7 @@ Library       RequestsLibrary
 
 *** Variables ***
 ${base_url}         https://rahulshettyacademy.com
-${book_id}          947303324534
+#${book_id}          947303324534
 ${book_name}        RobotFrameworkac
 
 *** Test Cases ***
@@ -28,10 +28,13 @@ Add Book into Library DataBase
          status should be       200     ${response}
 
 Get the book details added
-    ${get_response}=    GET     ${base_url}/Library/GetBook.php     params=ID=${book_id}      expected_status=200
+    ${Params}=     Create Dictionary   name=Vishal
+    ${get_response}=    GET     ${base_url}/Library/GetBook.php     params=${Params}      expected_status=200
+    Dictionary Should Contain Key    ${get_response}    aisle=3452
 
 Add new book
     ${new_json}=    Create Dictionary   name=Avinash    isbn=435875  aisle=4552     author=Avinash
     ${new_response}=    POST    ${base_url}/Library/Addbook.php    json=${new_json}  expected_status=200
 Add Python
-    ${py_json}=     Create Dictionary   name=Vishal     isbn=445268     aisle=3452
+    ${py_json}=     Create Dictionary   name=Vishal     isbn=445268     aisle=3452  author=para
+    ${py_response}=     POST     ${base_url}/Library/Addbook.php      json= ${py_json}    expected_status=200

@@ -2071,25 +2071,25 @@ storage = function () {
 window.output = {};
 </script>
 <script type="text/javascript">
-window.output["suite"] = [1,2,3,0,[],[1,0,942],[],[[4,0,0,[],[1,704,226],[[0,5,6,0,7,8,9,0,[1,704,0],[[704,2,10]]],[0,11,12,0,13,14,15,0,[1,704,226],[[930,2,16],[930,2,17],[930,2,18]]]]]],[],[1,1,0,0]];
+window.output["suite"] = [1,2,3,0,[],[0,0,761],[],[[4,0,0,[],[0,581,179,5],[[0,6,7,0,8,9,10,0,[1,581,13],[[581,2,11]]],[0,12,13,0,14,15,16,0,[1,594,167],[[759,2,17],[759,2,18],[761,2,19]]],[0,20,21,0,22,23,0,0,[0,761,0],[[761,5,5]]]]]],[],[1,0,1,0]];
 </script>
 <script type="text/javascript">
 window.output["strings"] = [];
 </script>
 <script type="text/javascript">
-window.output["strings"] = window.output["strings"].concat(["*","*APITest","*C:\\Users\\avina\\PycharmProjects\\Robot_automation\\test\\APITest.robot","*../test/APITest.robot","*Add new book","*Create Dictionary","*BuiltIn","*<p>Creates and returns a dictionary based on the given <code>items\x3c/code>.\x3c/p>","*name=Avinash    isbn=435875    aisle=4552    author=Avinash","*${new_json}","*${new_json} = {'name': 'Avinash', 'isbn': '435875', 'aisle': '4552', 'author': 'Avinash'}","*POST","*RequestsLibrary","*<p>Sends a POST request.\x3c/p>","*${base_url}/Library/Addbook.php    json=${new_json}    expected_status=200","*${new_response}","*POST Request : url=https://rahulshettyacademy.com/Library/Addbook.php \n path_url=/Library/Addbook.php \n headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '75', 'Content-Type': 'application/json'} \n body=b'{\"name\": \"Avinash\", \"isbn\": \"435875\", \"aisle\": \"4552\", \"author\": \"Avinash\"}' \n ","eNp9kU9P3DAQxe/9FKNcQqtkk80msEqVQ1TUf7BaBIvo1RsPa7dZ27XHlBT1u9deVKlIwHXe7715o7lYX23gEp3RyiG04O3YCSLj2qKwTPjRCSSa2MA47qfZoPfFudxaZqei53yr9Y+ZEQbegCNG3nVVWWZgkTmtuvVZmAsMTuu6h/SUEaYtpFeMMihP4KtXUJVVA/NlOy/bRQ2fVps0CwDaO7QR7Q0bBBbVrJ41FRxdb70i/zYy/TCgc/kHrcjqMe/HUf/K11bupIrGdy8yKyShuYvQRbj9GW7F7vN+d6i6OC7LF5M+P14WuSigonwzGczgNTqoPhSw8jcjqVUG3/JL/OnREfL8RpKI6/7FnaPahUlYUB/H+RmiCXHy7lCO5B61p67JYM/uu/lj1eBVOMTsyPznyJ7WjCozZpTDoUjxPXzs/SCYdUjd9eZjvkz/hPdtNZ+6h2TldkmbOH+47NaP4wSMc+RJlnw5DUq9aJYnTd00VRJdfwFVM78R","*${new_response} = &lt;Response [200]&gt;"]);
+window.output["strings"] = window.output["strings"].concat(["*","*APITest","*C:\\Users\\avina\\PycharmProjects\\Robot_automation\\test\\APITest.robot","*../test/APITest.robot","*Get the book details added","*TypeError: Expected argument 1 to be a dictionary, got Response instead.","*Create Dictionary","*BuiltIn","*<p>Creates and returns a dictionary based on the given <code>items\x3c/code>.\x3c/p>","*name=Vishal","*${Params}","*${Params} = {'name': 'Vishal'}","*GET","*RequestsLibrary","*<p>Sends a GET request.\x3c/p>","*${base_url}/Library/GetBook.php    params=${Params}    expected_status=200","*${get_response}","*GET Request : url=https://rahulshettyacademy.com/Library/GetBook.php?name=Vishal \n path_url=/Library/GetBook.php?name=Vishal \n headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} \n body=None \n ","eNp9kW9P2zAQh9/vU9y7bChp0rRlKMiauo11AkqnNvx566an2ltie/YZCIjvPrsIiUmUd9bdc797rJud1LBEZ7RyCBV42zJBZFyV55YL3zqBRD1v+Aa7ftDoLj+Xa8ttn8+Qvmr9Z2CE+aJ4h+xKOsFb+ACOOHnHyqJIwSJ3WrHFWagLDCnWscfkOydMKkhWnFIoPsOpV1AW5QSGR9W4rEYFzOZ1kgYA7S3aiE4NbwTm5WA8mJTw8XLtFflPkZk2DTqXfdOKrG6zadvqu2xh5VaqOHiwl5kjCb1xEfq1WNVvcHN+n023O9XRYVHsTfr5/LPIxQYqyureYArv0aHrg4CVD5ykVincZEv869ERbrJrSSKue4k7R7UNlbBgZ3GGaEKavN25kexQe2KTFDp+z4bPpmFUYROjI/NqIv3fMna5Ma1sdh7573CwY2gEtw6JXdY/sqPkKZxvrTc9u9AKw/sfvNO2+g==","*${get_response} = &lt;Response [200]&gt;","*Dictionary Should Contain Key","*Collections","*<p>Fails if <code>key\x3c/code> is not found from <code>dictionary\x3c/code>.\x3c/p>","*${get_response}    aisle=3452"]);
 </script>
 <script type="text/javascript">
-window.output["stats"] = [[{"elapsed":"00:00:00","fail":0,"label":"All Tests","pass":1,"skip":0}],[],[{"elapsed":"00:00:01","fail":0,"id":"s1","label":"APITest","name":"APITest","pass":1,"skip":0}]];
+window.output["stats"] = [[{"elapsed":"00:00:00","fail":1,"label":"All Tests","pass":0,"skip":0}],[],[{"elapsed":"00:00:01","fail":1,"id":"s1","label":"APITest","name":"APITest","pass":0,"skip":0}]];
 </script>
 <script type="text/javascript">
 window.output["errors"] = [];
 </script>
 <script type="text/javascript">
-window.output["baseMillis"] = 1749319833248;
+window.output["baseMillis"] = 1749321749328;
 </script>
 <script type="text/javascript">
-window.output["generated"] = 1036;
+window.output["generated"] = 788;
 </script>
 <script type="text/javascript">
 window.output["expand_keywords"] = null;
